@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+ 
+}
+
+form {
+  border: 1px solid #020202;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 320px;
+  background-color: aqua;
+
+}
+
+input {
+  padding: 6px;
+  width: 95%;
+}
+
+button {
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+#mensaje {
+  margin-top: 10px;
+  font-weight: bold;
+  color: red;
+}
