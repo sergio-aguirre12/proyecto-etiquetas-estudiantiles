@@ -1,5 +1,5 @@
 {
-  "usuarios": [
+  "usuarios": [ 
     {
       "id": "1",
       "nombre": "sergio",
@@ -13,5 +13,6 @@
       "rol": "profesor"
     }
   ],
-  "tickets": [ ]
+  "tickets": []
+    
 }
