@@ -14,19 +14,28 @@ if (!nombreAlumno || rolUsuario !== "alumno") {
 nombreAlumnoSpan.textContent = nombreAlumno;
 
 function mostrarTiquetes() {
-  obtenerTickets().then(data => {
+  obtenerTickets().then(function(data) {
     listaTiquetes.innerHTML = "";
     data
-      .filter(ticket => ticket.alumno === nombreAlumno)
-      .forEach(ticket => {
-        const li = document.createElement("li");
-        li.textContent = `${ticket.consulta} (Hora: ${ticket.hora})`;
+      .filter(function(ticket) {
+        return ticket.alumno === nombreAlumno;
+      })
+      .forEach(function(ticket) {
+        var li = document.createElement("li");
+
+        li.innerHTML = `
+          <strong>Consulta:</strong> ${ticket.consulta} <br>
+          <small>Hora: ${ticket.hora}</small> <br>
+          <strong>Respuesta del profesor:</strong> 
+          ${ticket.respuesta ? ticket.respuesta : "⏳ Aún sin responder"}
+        `;
+
         listaTiquetes.appendChild(li);
       });
   });
 }
-mostrarTiquetes();
 
+mostrarTiquetes();
 
 formTiquete.addEventListener("submit", function (e) {
   e.preventDefault();

@@ -8,7 +8,43 @@
 </head>
 <body>
     
-<h1>hola</h1>
+
+      <div id="sidebar">
+  <h3>Administrar Usuarios</h3>
+  
+  <ul id="lista-profesores"></ul>
+
+  <h4>➕ Agregar Usuario</h4>
+  <form id="form-agregar-profesor">
+    <input type="text" id="nombre-profesor" placeholder="Nombre" required>
+    <input type="password" id="password-profesor" placeholder="Contraseña" required>
+    <select id="rol-profesor" required>
+      <option value="">Seleccionar rol</option>
+      <option value="profesor">Profesor</option>
+      <option value="administrador">Administrador</option>
+    </select>
+    <button type="submit">Guardar</button>
+  </form>
+</div>
+
+
+  
+  <div id="main-content">
+    <h1>Panel del Profesor</h1>
+    <p>Bienvenido, <span id="nombreProfesor"></span></p>
+
+    <h2 class="titulotiquetes">Lista de Tiquetes</h2>
+    <ul id="listaTiquetes"></ul>
+
+    <button id="respond">Responder</button>
+  </div>
+
+ 
+
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 {
-  "usuarios": [ 
+  "usuarios": [
     {
       "id": "1",
       "nombre": "sergio",
@@ -11,8 +11,75 @@
       "nombre": "steven",
       "password": "123456",
       "rol": "profesor"
+    },
+    {
+      "id": "26a3",
+      "nombre": "cristiano ronaldo",
+      "password": "12345",
+      "rol": "profesor"
+    },
+    {
+      "id": "c4dd",
+      "nombre": "magistro",
+      "password": "123456",
+      "rol": "profesor"
+    },
+    {
+      "id": "bee2",
+      "nombre": "maria",
+      "password": "12345",
+      "rol": "administrador"
+    },
+    {
+      "id": "77b0",
+      "nombre": "kerry",
+      "correo": "qsdqaxqx@gmail.com",
+      "password": "1234",
+      "grado": "11",
+      "rol": "alumno"
+    },
+    {
+      "id": "99ae",
+      "nombre": "josue",
+      "password": "12345",
+      "rol": "profesor"
     }
   ],
-  "tickets": []
-    
+  "tickets": [
+    {
+      "id": "4e67",
+      "alumno": "sergio",
+      "consulta": "hola",
+      "hora": "29/8/2025, 10:37:04",
+      "respuesta": "sergio claro estamos para servirte"
+    },
+    {
+      "id": "b13c",
+      "alumno": "sergio",
+      "consulta": "como estas",
+      "hora": "29/8/2025, 11:57:55",
+      "respuesta": ""
+    },
+    {
+      "id": "1db0",
+      "alumno": "sergio",
+      "consulta": "como estas",
+      "hora": "29/8/2025, 15:07:06",
+      "respuesta": "bien bien ytu"
+    },
+    {
+      "id": "c839",
+      "alumno": "kerry",
+      "consulta": "profe como la tarea de mañana",
+      "hora": "29/8/2025, 15:13:46",
+      "respuesta": "no puedo hoy"
+    },
+    {
+      "id": "714d",
+      "alumno": "sergio",
+      "consulta": "onde estas",
+      "hora": "1/9/2025, 8:32:11",
+      "respuesta": "onde estas"
+    }
+  ]
 }

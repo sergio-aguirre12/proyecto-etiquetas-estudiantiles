@@ -1,4 +1,5 @@
 
+//pide los usuarios echos de la funcion
 export function obtenerUsuarios() {
   return fetch("http://localhost:3001/usuarios")
     .then(function (respuesta) { return respuesta.json(); })
@@ -9,8 +10,7 @@ export function obtenerUsuarios() {
     });
 }
 
-
-
+//pide los tiketes echos de la funcion
 export function obtenerTickets() {
 
   return fetch("http://localhost:3001/tickets")
@@ -24,7 +24,7 @@ export function obtenerTickets() {
       return [];
     });
 }
-
+//crear tickets y envia los nuevos tikes al servidor 
 export function crearTicket(ticket) {
 
   return fetch("http://localhost:3001/tickets", {
@@ -39,3 +39,17 @@ export function crearTicket(ticket) {
       return respuesta.json();
     });
 }
+
+ //registro usarios nuevos 
+export function crearUsuario(usuario) {
+  return fetch("http://localhost:3001/usuarios", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(usuario)
+  })
+    .then(function (respuesta) {
+      return respuesta.json();
+    });
+} 
