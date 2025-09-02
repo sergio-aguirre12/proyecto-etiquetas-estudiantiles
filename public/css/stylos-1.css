@@ -1,30 +1,85 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
- 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #4b79a1; /* azul escolar */
+  background: linear-gradient(to right, #283e51, #485563);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 form {
-  border: 1px solid #020202;
-  padding: 15px;
-  border-radius: 8px;
-  max-width: 320px;
-  background-color: aqua;
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  width: 360px;
+  text-align: center;
+}
 
+form .logo {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+form h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 22px;
 }
 
 input {
-  padding: 6px;
-  width: 95%;
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #4b79a1;
+  outline: none;
+  box-shadow: 0 0 6px rgba(75,121,161,0.5);
 }
 
 button {
-  padding: 8px 15px;
-  margin-top: 10px;
+  width: 95%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  background: #4b79a1;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #35506b;
+  transform: translateY(-2px);
 }
 
 #mensaje {
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: bold;
   color: red;
+  font-size: 13px;
+}
+
+.links {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.links a {
+  color: #4b79a1;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
 }

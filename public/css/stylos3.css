@@ -31,3 +31,21 @@ body {
   flex: 1;
   padding: 20px;
 }
+
+
+#btnLogout {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e84118;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#btnLogout:hover {
+  background-color: #c23616;
+}
+

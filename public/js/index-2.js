@@ -14,27 +14,27 @@ if (!nombreAlumno || rolUsuario !== "alumno") {
 nombreAlumnoSpan.textContent = nombreAlumno;
 
 function mostrarTiquetes() {
-  obtenerTickets().then(function(data) {
+  obtenerTickets().then(function (data) {
     listaTiquetes.innerHTML = "";
     data
-      .filter(function(ticket) {
-        return ticket.alumno === nombreAlumno;
-      })
-      .forEach(function(ticket) {
+      .filter(ticket => ticket.alumno === nombreAlumno)
+      .forEach(ticket => {
         var li = document.createElement("li");
 
         li.innerHTML = `
           <strong>Consulta:</strong> ${ticket.consulta} <br>
           <small>Hora: ${ticket.hora}</small> <br>
-          <strong>Respuesta del profesor:</strong> 
-          ${ticket.respuesta ? ticket.respuesta : "⏳ Aún sin responder"}
+          <strong>Respuestas del profesor:</strong> 
+          ${ticket.respuestas && ticket.respuestas.length > 0
+            ? "<ul>" + ticket.respuestas.map(r => `<li>${r}</li>`).join("") + "</ul>"
+            : "<em>⏳ Aún sin responder</em>"
+          }
         `;
 
         listaTiquetes.appendChild(li);
       });
   });
 }
-
 mostrarTiquetes();
 
 formTiquete.addEventListener("submit", function (e) {
@@ -44,10 +44,21 @@ formTiquete.addEventListener("submit", function (e) {
   if (consulta === "") return;
 
   const hora = new Date().toLocaleString();
-  const nuevoTiquete = { alumno: nombreAlumno, consulta: consulta, hora: hora };
+  const nuevoTiquete = {
+    alumno: nombreAlumno,
+    consulta: consulta,
+    hora: hora,
+    respuestas: []
+  };
 
-  crearTicket(nuevoTiquete).then(function () {
+  crearTicket(nuevoTiquete).then(() => {
     consultaInput.value = "";
     mostrarTiquetes();
   });
+});
+
+document.getElementById("btnLogout").addEventListener("click", function () {
+  localStorage.removeItem("usuarioLogeado");
+  localStorage.removeItem("rolUsuario");
+  window.location.href = "index1.html";
 });

@@ -9,13 +9,14 @@ const nombreProfesor = localStorage.getItem("usuarioLogeado");
 const rolUsuario = localStorage.getItem("rolUsuario");
 
 if (!nombreProfesor || rolUsuario !== "profesor") {
-    alert("Debes iniciar sesión como profesor");
-    window.location.href = "index1.html";
+  alert("Debes iniciar sesión como profesor");
+  window.location.href = "index1.html";
 }
 nombreProfesorSpan.textContent = nombreProfesor;
 
+
 function mostrarTiquetes() {
-  obtenerTickets().then(function(data) {
+  obtenerTickets().then(function (data) {
     listaTiquetes.innerHTML = "";
     for (var i = 0; i < data.length; i++) {
       var li = document.createElement("li");
@@ -23,7 +24,10 @@ function mostrarTiquetes() {
       li.innerHTML = `
         <strong>${data[i].alumno}</strong>: ${data[i].consulta} 
         (Hora: ${data[i].hora}) <br>
-        Respuesta: ${data[i].respuesta ? data[i].respuesta : "Sin responder"} <br>
+        <strong>Respuestas:</strong>
+        <ul>
+          ${(data[i].respuestas || []).map(r => `<li>${r}</li>`).join("")}
+        </ul>
         <input type="text" id="respuesta-${data[i].id}" placeholder="Escribir respuesta">
         <button onclick="responderTicket('${data[i].id}')">Responder</button>
       `;
@@ -33,8 +37,8 @@ function mostrarTiquetes() {
   });
 }
 
-
 mostrarTiquetes();
+
 
 function mostrarProfesores() {
   fetch("http://localhost:3001/usuarios")
@@ -42,17 +46,18 @@ function mostrarProfesores() {
     .then(data => {
       listaProfesores.innerHTML = "";
       data.filter(u => u.rol === "profesor" || u.rol === "administrador")
-          .forEach(u => {
-            const li = document.createElement("li");
-            li.textContent = u.nombre + " (" + u.rol + ")";
-            listaProfesores.appendChild(li);
-          });
+        .forEach(u => {
+          const li = document.createElement("li");
+          li.textContent = u.nombre + " (" + u.rol + ")";
+          listaProfesores.appendChild(li);
+        });
     });
 }
 
 mostrarProfesores();
 
-formAgregar.addEventListener("submit", function(event) {
+
+formAgregar.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const nombre = document.getElementById("nombre-profesor").value.trim();
@@ -65,16 +70,16 @@ formAgregar.addEventListener("submit", function(event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nombre, password, rol })
     })
-    .then(res => res.json())
-    .then(() => {
-      mostrarProfesores(); 
-      formAgregar.reset(); 
-    });
+      .then(res => res.json())
+      .then(() => {
+        mostrarProfesores();
+        formAgregar.reset();
+      });
   }
 });
 
 
-window.responderTicket = function(id) { // lo ponemos en window para que funcione con onclick
+window.responderTicket = function (id) {
   const input = document.getElementById(`respuesta-${id}`);
   const respuesta = input.value.trim();
 
@@ -83,13 +88,28 @@ window.responderTicket = function(id) { // lo ponemos en window para que funcion
     return;
   }
 
-  fetch(`http://localhost:3001/tickets/${id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ respuesta })
-  })
-  .then(res => res.json())
-  .then(() => {
-    mostrarTiquetes(); 
-  });
-}
+
+  fetch(`http://localhost:3001/tickets/${id}`)
+    .then(res => res.json())
+    .then(ticket => {
+      const nuevasRespuestas = ticket.respuestas || [];
+      nuevasRespuestas.push(respuesta);
+
+      return fetch(`http://localhost:3001/tickets/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ respuestas: nuevasRespuestas })
+      });
+    })
+    .then(() => {
+      input.value = "";
+      mostrarTiquetes();
+    });
+};
+
+
+document.getElementById("btnLogout").addEventListener("click", function () {
+  localStorage.removeItem("usuarioLogeado");
+  localStorage.removeItem("rolUsuario");
+  window.location.href = "index1.html";
+});

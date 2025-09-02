@@ -10,25 +10,24 @@
 
 <body>
 
-  <h1>login de Solicitud de Asistencia </h1>
+
+
 
   <form id="form-login">
-    <label for="nombre">Usuario:</label><br>
-    <input type="text" id="nombre" required><br><br>
+    <div class="logo">🏫</div>
+    <h2>Iniciar Sesión </h2>
 
-    <label for="password">Contraseña:</label><br>
-    <input type="password" id="password" required><br><br>
+    <input type="text" id="nombre" placeholder="Usuario" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
 
     <button type="submit">Entrar</button>
 
+    <div id="mensaje"></div>
 
-   <button id="registrar">registrar</button>
-
-   </form>
-
-  <p id="mensaje"></p>
-
-   
+    <div class="links">
+      <a href="#" id="registrar">Registrar nueva cuenta</a>
+    </div>
+  </form>
 
 
   <script type="module" src="../js/index1.js"></script>

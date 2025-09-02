@@ -30,12 +30,12 @@ formLogin.addEventListener("submit", function (e) {
     mensaje.style.color = "green";
     mensaje.textContent = "Bienvenido " + usuarioEncontrado.nombre;
 
-  
+
     setTimeout(function () {
       if (usuarioEncontrado.rol === "alumno") {
-        window.location.href = "../pages/index-2.html"; 
+        window.location.href = "../pages/index-2.html";
       } else {
-        window.location.href = "../pages/index-3.html";  
+        window.location.href = "../pages/index-3.html";
       }
     }, 1000);
   });
@@ -43,6 +43,6 @@ formLogin.addEventListener("submit", function (e) {
 
 
 registrarBtn.addEventListener("click", function (e) {
-  e.preventDefault(); 
-  window.location.href = "../pages/registro.html"; 
+  e.preventDefault();
+  window.location.href = "../pages/registro.html";
 });
