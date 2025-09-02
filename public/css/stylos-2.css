@@ -41,10 +41,6 @@ textarea {
   resize: vertical;
 }
 
-
-
-
-
 #btnLogout {
   padding: 10px 20px;
   border: none;
@@ -56,9 +52,32 @@ textarea {
   cursor: pointer;
   transition: background 0.3s;
 }
-
 #btnLogout:hover {
   background-color: #c23616;
 }
 
 
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#listaTiquetes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+#listaTiquetes li {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}

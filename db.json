@@ -32,12 +32,16 @@
       "hora": "29/8/2025, 11:57:55",
       "respuesta": ""
     },
+    
     {
-      "id": "001f",
+      "id": "e641",
       "alumno": "sergio",
-      "consulta": "hola",
-      "hora": "2/9/2025, 8:28:48",
-      "respuesta": ""
+      "consulta": "holaaaa",
+      "hora": "2/9/2025, 10:12:26",
+      "respuestas": [
+        "hola todo",
+        "cm estas"
+      ]
     }
   ]
 }
